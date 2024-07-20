@@ -45,13 +45,12 @@ func AddProduct(p *Product) {
 	productList = append(productList, p)
 }
 
-func UpdateProduct(id int, p *Product) (*Product, error) {
-	i, err := findProductById(id)
+func UpdateProduct(p *Product) (*Product, error) {
+	i, err := findProductById(p.ID)
 	if err != nil {
 		return nil, err
 	}
 
-	p.ID = id
 	productList[i] = p
 	return productList[i], nil
 }
@@ -82,7 +81,7 @@ var productList = []*Product{
 	},
 	{
 		ID:          2,
-		Name:        "Esspresso",
+		Name:        "Espresso",
 		Description: "Short and strong coffee without milk",
 		Price:       1.99,
 		SKU:         "sdf34",
